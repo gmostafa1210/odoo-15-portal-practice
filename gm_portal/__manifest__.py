@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
-##############################################################
-#                                                            #
-#   G. Mostafa                                               #
-#   Copyright (C) 2024 (https://gmostafa1210.github.io/)     #
-#                                                            #
-##############################################################
+############################################################
+#                                                          #
+#   G. Mostafa                                             #
+#   Copyright (C) 2024 (https://gmostafa1210.github.io/)   #
+#                                                          #
+############################################################
 
 {
     'name': 'Portal Practice',
@@ -22,7 +22,7 @@
         'security/ir.model.access.csv',
         'data/sequence.xml',
         'views/student_views.xml',
-        # 'views/portal_template_views.xml',
+        'views/portal_templates.xml',
     ],
     'license': 'LGPL-3',
     'installable': True,

@@ -1,14 +1,13 @@
 # -*- encoding: utf-8 -*-
-##############################################################
-#                                                            #
-#   G. Mostafa                                               #
-#   Copyright (C) 2024 (https://gmostafa1210.github.io/)     #
-#                                                            #
-##############################################################
+############################################################
+#                                                          #
+#   G. Mostafa                                             #
+#   Copyright (C) 2024 (https://gmostafa1210.github.io/)   #
+#                                                          #
+############################################################
 
 from odoo import models, api, fields, _
-from datetime import date
-from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
 import re
 
 
@@ -62,7 +61,7 @@ class GmStudent(models.Model):
         """
         for record in self:
             if record.dob:
-                today = date.today()
+                today = fields.Date.today()
                 if today.strftime("%m%d") >= record.dob.strftime("%m%d"):
                     record['age'] = today.year - record.dob.year
                 else:
@@ -76,15 +75,15 @@ class GmStudent(models.Model):
         This function will check the validity of dob, phone, email.
         """
         for record in self:
-            if record.dob and record.dob >= date.today():
-                raise UserError(_("Invalid DOB!"))
+            if record.dob and record.dob >= fields.Date.today():
+                raise ValidationError(_("Invalid DOB!"))
             if record.phone:
                 if len(record.phone) != 11 or not record.phone.isnumeric() or record.phone[0:2] != '01':
-                    raise UserError(_("Not a valid phone number."))
+                    raise ValidationError(_("Not a valid phone number."))
             if record.email:
                 match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.email)
                 if match == None:
-                    raise UserError(_('Not a valid email!'))
+                    raise ValidationError(_('Not a valid email!'))
 
     @api.model
     def create(self, values):
