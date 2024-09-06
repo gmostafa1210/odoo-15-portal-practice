@@ -19,6 +19,9 @@
         'base', 'portal',
     ],
     'data': [
+        'security/ir.model.access.csv',
+        'data/sequence.xml',
+        'views/student_views.xml',
         # 'views/portal_template_views.xml',
     ],
     'license': 'LGPL-3',

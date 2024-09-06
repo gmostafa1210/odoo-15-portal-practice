@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem 
+        id='menu_gm_student'
+        name='Student Management'
+        sequence='1'
+        web_icon='gm_portal,static/description/icon.png'/>
+
+    <record id="action_sub_gm_student" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="res_model">gm.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem 
+        id='menu_sub_gm_student'
+        action='action_sub_gm_student'
+        name='Student'
+        parent='menu_gm_student'
+        sequence='1'/>
+
+    <record id="view_gm_student_tree" model="ir.ui.view">
+        <field name="name">gm.student.tree</field>
+        <field name="model">gm.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="student_code"/>
+                <field name="gender"/>
+                <field name="age"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_gm_student_form" model="ir.ui.view">
+        <field name="name">gm.student.form</field>
+        <field name="model">gm.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <field name="img" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image_128&quot;}"/>
+                    <div class="oe_title">
+                        <h5>Student Code</h5>
+                        <h1><field name="student_code" default_focus="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="gender"/>
+                            <field name="dob"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="nid"/>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
