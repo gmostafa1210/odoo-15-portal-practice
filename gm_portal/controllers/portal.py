@@ -6,5 +6,13 @@
 #                                                          #
 ############################################################
 
-from . import models
-from . import controllers
+from odoo.addons.portal.controllers.portal import CustomerPortal
+from odoo.http import request
+
+
+class GmCustomerPortal(CustomerPortal):
+
+    def _prepare_home_portal_values(self, counters):
+        res = super()._prepare_home_portal_values(counters)
+        res['student_count'] = request.env['gm.student'].sudo().search_count([])
+        return res

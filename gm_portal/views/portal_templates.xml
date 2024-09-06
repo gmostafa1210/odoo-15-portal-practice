@@ -6,6 +6,7 @@
             <t t-call="portal.portal_docs_entry">
                 <t t-set="url">/my/students</t>
                 <t t-set="title">Students</t>
+                <t t-set="placeholder_count" t-value="'student_count'"/>
             </t>
         </xpath>
     </template>
